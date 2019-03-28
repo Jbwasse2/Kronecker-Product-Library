@@ -9,6 +9,8 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from src.kronprod import KronProd
+import matplotlib.pyplot as plt
+import seaborn as sns
 from src.operations import *
 import math
 #
@@ -174,17 +176,33 @@ def psuedoTest(A,x):
 
 if __name__ == "__main__":
     #Generate matrix and vector
-    size = 10
-    A1 = ortho_group.rvs(dim=size)
-    A2 = ortho_group.rvs(dim=size)
-    x = np.random.rand(size**2)
-    print("Transpose Test")
-    print(transposeTest([A1,A2],x))
-    print("Inverse Test")
-    print(inverseTest([A1, A2], x))
-    print("PInverse Test")
-    print(psuedoTest([A1, A2], x))
-    print("Complex Test")
-    print(complexTest([A1,A2],x))
-    print("Dot Test")
-    print(dotTest([A1,A2],x))
+    #size = 10
+    #A1 = ortho_group.rvs(dim=size)
+    #A2 = ortho_group.rvs(dim=size)
+    #x = np.random.rand(size**2)
+    #print("Transpose Test")
+    #print(transposeTest([A1,A2],x))
+    #print("Inverse Test")
+    #print(inverseTest([A1, A2], x))
+    #print("PInverse Test")
+    #print(psuedoTest([A1, A2], x))
+    #print("Complex Test")
+    #print(complexTest([A1,A2],x))
+    #print("Dot Test")
+    #print(dotTest([A1,A2],x))
+    time_full = []
+    time_kron = []
+    for i in range(2,150):
+        print(i)
+        A1 = ortho_group.rvs(dim=i)
+        A2 = ortho_group.rvs(dim=i)
+        x = np.random.rand(i**2)
+        full, kron = dotTest([A1,A2],x)
+        time_full.append(full)
+        time_kron.append(kron)
+
+    plt.plot(time_full,label="Full Kronecker Product")
+    plt.plot(time_kron,label="Pereyra's Memory Efficient Algorithm")
+    plt.legend()
+    plt.savefig('ComputationTime.png')
+    plt.show()
