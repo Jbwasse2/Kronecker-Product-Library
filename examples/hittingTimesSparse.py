@@ -2,7 +2,8 @@ import numpy as np
 from numpy import linalg as LA
 import time
 from discreteMarkovChain import markovChain
-from src.kronprod_sparse import *
+import os, sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from src.kronprod import *
 import copy
 
@@ -35,7 +36,7 @@ def hittingtime(Mlist):
     #Plist = [np.array(markovChain(m).getTransitionMatrix()) for m in Mlist]
     A1 = Mlist
 
-    A = KronProdSparse(A1)
+    A = KronProd(A1, sparse_flag=True)
 
     hittingset = twoAgentHittingSet(A.n[0], len(A1))
 

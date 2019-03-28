@@ -14,7 +14,7 @@ class TestExamples(unittest.TestCase):
 
     def test_neighbors(self):
         self.assertSequenceEqual(neighbors(0, env1), [4])
-        self.assertSequenceEqual(neighbors(10, env1), [5,14,9])
+        self.assertSequenceEqual(neighbors(10, env1).sort(), [5,14,9].sort())
 
     def test_envs(self):
         self.assertTrue(check_grid_topo(env1))
@@ -25,7 +25,7 @@ class TestExamples(unittest.TestCase):
 
     def test_simple_step_gen(self):
         ns = neighbors(3, env2)
-        self.assertSequenceEqual(ns, [5,2])
+        self.assertSequenceEqual(ns.sort(), [5,2].sort())
         p1 = gridworld_step_prob(3,5, types2[0], env2)
         self.assertEqual(p1, 0.2)
         p2 = gridworld_step_prob(3,2, types2[1], env2)

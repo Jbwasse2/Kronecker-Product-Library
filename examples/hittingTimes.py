@@ -3,8 +3,10 @@ import time
 from numpy import linalg as LA
 import scipy
 
+import os, sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from src.kronprod import KronProd
 from discreteMarkovChain import markovChain
-from src.kronprod import *
 
 
 def fullKronProd(P,Q):
