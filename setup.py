@@ -2,10 +2,12 @@
 from setuptools import setup, find_packages
 
 setup(name="kronprod",
-      version="1.0",
+      version="1.1",
       author="Justin Wasserman, Alexandra Nilles",
-      url="https://github.com/Jbwasse2/Kronecker-Product-Library",
+      author_email="jbwasse2@illinois.edu",
+      url="https://github.com/Jbwasse2/kronprod",
       description="Kronecker Product Library",
+      python_requires='>3.3',
       long_description=" ",
       classifiers=[
           "Programming Language :: Python",
@@ -18,6 +20,9 @@ setup(name="kronprod",
           "Topic :: Software Development :: Libraries :: Python Modules"],
       platforms=["Any"],
       license="MIT",
-      py_modules=['kronprod', 'KronMDP'],
-      packages=find_packages(),
+      packages=find_packages(exclude=['test']),
+    #  package_dir={"": "src"},
+    #  py_modules=['kronprod', 'KronMDP'],
+      packages=['kronprod'],
+      package_dir={'kronprod': 'src'},
       install_requires=["numpy", "scipy"])
