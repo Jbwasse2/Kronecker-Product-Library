@@ -62,6 +62,3 @@ class TestKronSparse(unittest.TestCase):
         Y = kp.dot(x)
         print("efficient calc: ", Y)
 
-
-if __name__ == '__main__':
-    unittest.main()

@@ -65,5 +65,3 @@ class TestKron(unittest.TestCase):
         print("efficient calc: ", Y)
 
 
-if __name__ == '__main__':
-    unittest.main()
