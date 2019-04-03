@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 
-from .fail import As_fail, Y_fail
+from test.fail import As_fail, Y_fail
 from scipy.stats import ortho_group
 import unittest
 import numpy as np
