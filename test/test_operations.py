@@ -11,6 +11,7 @@ import numpy as np
 import os, sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from functools import reduce
+print("FILE IS", __file__)
 from src.operations import *
 
 class TestOperations(unittest.TestCase):

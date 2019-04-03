@@ -24,5 +24,5 @@ setup(name="kronprod",
     #  package_dir={"": "src"},
     #  py_modules=['kronprod', 'KronMDP'],
       packages=['kronprod'],
-      package_dir={'kronprod': 'src'},
+      package_dir={'kronprod': './src'},
       install_requires=["numpy", "scipy"])

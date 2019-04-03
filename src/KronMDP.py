@@ -2,10 +2,11 @@
 
 import numpy as _np
 import time as _time
-from mdptoolbox.mdp import MDP, _printVerbosity, _MSG_STOP_EPSILON_OPTIMAL_POLICY, _MSG_STOP_MAX_ITER, _MSG_STOP_EPSILON_OPTIMAL_VALUE
-import mdptoolbox.util as _util
-from src.kronprod import KronProd
-from src.kronprod_sparse import KronProdSparse
+
+import os, sys
+from .mdp import MDP, _printVerbosity, _MSG_STOP_EPSILON_OPTIMAL_POLICY, _MSG_STOP_MAX_ITER, _MSG_STOP_EPSILON_OPTIMAL_VALUE
+from . import util as _util
+from .kronprod import KronProd
 from functools import reduce
 import scipy.sparse as _sp
 
@@ -158,7 +159,7 @@ class KronMDP(MDP):
 
     def _computeTransition(self, transition):
         if self.sparse:
-            return tuple(KronProdSparse(transition[a]) for a in range(self.A))
+            return tuple(KronProd(transition[a], sparse_flag=True) for a in range(self.A))
         else:
             return tuple(KronProd(transition[a]) for a in range(self.A))
 
